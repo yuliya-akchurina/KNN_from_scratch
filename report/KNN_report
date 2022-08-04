@@ -1,7 +1,9 @@
-### Implement the KNN classifier:
+Implement the KNN classifier:
   (a) Report test accuracies when k = 1; 5; 11; 21; 41; 61; 81; 101; 201; 401 without normalizing the features.
   (b) Report test accuracies when k = 1; 5; 11; 21; 41; 61; 81; 101; 201; 401 with z-score normalization applied to the features.
-  (c) In the (b) case, generate an output of KNN predicted labels for the first 50 instances (i.e. t1 - t50) when k = 1; 5; 11; 21; 41; 61; 81; 101; 201; 401 (in this order). For example, if t5 is classified as class “spam” when k = 1; 5; 11; 21; 41; 61 and classified as class “no-spam” when k = 81; 101; 201; 401, then your output line for t5 should be: t5 spam, spam, spam, spam, spam, spam, no, no, no, no
+  (c) In the (b) case, generate an output of KNN predicted labels for the first 50 instances (i.e. t1 - t50) when k = 1; 5; 11; 21; 41; 61; 81; 101; 201; 401 
+  (in this order). For example, if t5 is classified as class “spam” when k = 1; 5; 11; 21; 41; 61 and classified as class “no-spam” when k = 81; 101; 201; 401, 
+  then your output line for t5 should be: t5 spam, spam, spam, spam, spam, spam, no, no, no, no
   (d) What can you conclude by comparing the KNN performance in (a) and (b)?
   (e) Describe a method to select the optimal k for the KNN algorithm.
   
@@ -86,8 +88,15 @@ t49 spam spam spam spam spam spam spam spam spam spam
 t50 spam spam spam spam spam spam spam spam spam spam
 
 (d):
-The accuracy of predictions of normalized and non-normalized data follow the same pattern. Normalization of the data significantly improves accuracy of the predictions. Without normalization different attributes have various low and high values, this might affect predictions. Since KNN uses distances to predict class the instance values must be scaled to provide more accurate predictions. Normalization helps to eliminate noise that might cause inaccurate predictions and makes all values equally weighted as required in this problem description.
+The accuracy of predictions of normalized and non-normalized data follow the same pattern. Normalization of the data significantly improves accuracy 
+of the predictions. Without normalization different attributes have various low and high values, this might affect predictions. Since KNN uses 
+distances to predict class the instance values must be scaled to provide more accurate predictions. Normalization helps to eliminate noise that 
+might cause inaccurate predictions and makes all values equally weighted as required in this problem description.
 
 (e):
-There are several ways to select optimal K for KNN algorithm. Cross validation can be used to select K for KNN algorithm. We can split the data into n number of folds of similar sizes, hold out the first set as a test dataset, for each value of K calculate nearest neighbors and record the accuracy of the test. Repeat this calculation on all n folds. For each K find average accuracy rates across validation sets and choose the K value with the highest accuracy rate. Use this K to construct the final model. Always choose an odd number for K to avoid the equal vote split.
-Another way of choosing K is called “elbow method”. It is widely used in programming and Python packages such as scikit-learn. The method plots the explained variation as a function of the number of clusters and picking the elbow of the curve as the number of clusters to use.
+There are several ways to select optimal K for KNN algorithm. Cross validation can be used to select K for KNN algorithm. We can split the data 
+into n number of folds of similar sizes, hold out the first set as a test dataset, for each value of K calculate nearest neighbors and record 
+the accuracy of the test. Repeat this calculation on all n folds. For each K find average accuracy rates across validation sets and choose 
+the K value with the highest accuracy rate. Use this K to construct the final model. Always choose an odd number for K to avoid the equal vote split.
+Another way of choosing K is called “elbow method”. It is widely used in programming and Python packages such as scikit-learn. The method plots 
+the explained variation as a function of the number of clusters and picking the elbow of the curve as the number of clusters to use.
