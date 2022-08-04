@@ -1,0 +1,93 @@
+### Implement the KNN classifier:
+  (a) Report test accuracies when k = 1; 5; 11; 21; 41; 61; 81; 101; 201; 401 without normalizing the features.
+  (b) Report test accuracies when k = 1; 5; 11; 21; 41; 61; 81; 101; 201; 401 with z-score normalization applied to the features.
+  (c) In the (b) case, generate an output of KNN predicted labels for the first 50 instances (i.e. t1 - t50) when k = 1; 5; 11; 21; 41; 61; 81; 101; 201; 401 (in this order). For example, if t5 is classified as class “spam” when k = 1; 5; 11; 21; 41; 61 and classified as class “no-spam” when k = 81; 101; 201; 401, then your output line for t5 should be: t5 spam, spam, spam, spam, spam, spam, no, no, no, no
+  (d) What can you conclude by comparing the KNN performance in (a) and (b)?
+  (e) Describe a method to select the optimal k for the KNN algorithm.
+  
+  The accuracies as they are printed out by the Python script for Questions a and b, as well as the first 50 predictions for the normalized datasets for questions c:
+  
+KNN accuracy report without normalizing features:
+K-1: 75.18%
+K-5: 75.49%
+K-11: 76.49%
+K-21: 74.66%
+K-41: 75.23%
+K-61: 73.75%
+K-81: 72.66%
+K-101: 72.88%
+K-201: 73.14%
+K-401: 71.97%
+
+KNN accuracy report with z normalized features:
+K-1: 82.31%
+K-5: 83.22%
+K-11: 87.48%
+K-21: 87.09%
+K-41: 87.05%
+K-61: 87.01%
+K-81: 86.96%
+K-101: 86.4%
+K-201: 84.62%
+K-401: 81.44%
+
+K_predictions, z normalized, first 50 rows:
+1 5 11 21 41 61 81 101 201 401
+ID
+t1 spam spam spam spam spam no no no no no
+t2 spam spam spam spam spam spam spam no no no
+t3 spam spam spam spam spam spam spam spam spam spam
+t4 spam spam spam spam no no spam spam spam spam
+t5 spam spam spam spam spam spam spam spam spam spam
+t6 spam spam spam no no spam spam spam spam spam
+t7 spam no no no no no no no no no
+t8 spam spam spam spam spam spam spam spam spam spam
+t9 spam spam spam spam spam spam spam spam spam spam
+t10 spam spam spam spam spam spam spam spam spam spam
+t11 spam spam spam spam spam spam spam spam spam spam
+t12 spam spam spam spam spam spam spam spam spam spam
+t13 spam spam spam spam spam spam no no no no
+t14 no spam spam spam no no no no no no
+t15 spam spam spam spam spam spam spam spam spam spam
+t16 spam spam spam spam spam spam spam spam spam spam
+t17 spam spam spam spam spam spam spam spam spam spam
+t18 spam spam spam spam spam spam spam no no no
+t19 spam spam spam spam spam spam spam spam spam spam
+t20 no spam spam spam spam spam spam spam spam spam
+t21 spam spam spam spam spam spam spam spam spam spam
+t22 spam spam spam spam spam spam no no no no
+t23 spam spam spam spam spam spam spam spam spam spam
+t24 no no spam spam spam spam spam spam spam spam
+t25 spam spam spam spam spam spam spam spam spam spam
+t26 spam spam spam spam spam spam spam spam spam spam
+t27 spam spam spam spam spam spam spam spam spam spam
+t28 spam spam spam spam spam spam spam spam spam spam
+t29 spam spam spam no spam spam spam spam no no
+t30 spam spam spam spam no no no no no no
+t31 spam no no no no no no no no no
+t32 spam spam spam spam no spam spam spam no no
+t33 spam spam spam spam no no no no no no
+t34 spam spam no spam no no no no no no
+t35 spam spam spam spam spam spam spam spam spam spam
+t36 spam spam spam spam spam spam spam spam spam spam
+t37 spam spam spam spam spam spam spam spam spam spam
+t38 spam spam spam spam spam spam spam spam spam spam
+t39 spam spam spam spam spam spam spam spam spam spam
+t40 no no no no no no no no no no
+t41 no no no no no no no no no no
+t42 spam spam spam spam spam spam spam spam no no
+t43 no no no no no no no no no no
+t44 no no no no no no no no no no
+t45 spam spam spam spam spam spam spam spam spam spam
+t46 spam spam spam spam spam spam spam spam spam spam
+t47 spam spam spam spam spam spam spam spam spam spam
+t48 spam spam spam spam spam spam spam spam spam spam
+t49 spam spam spam spam spam spam spam spam spam spam
+t50 spam spam spam spam spam spam spam spam spam spam
+
+(d):
+The accuracy of predictions of normalized and non-normalized data follow the same pattern. Normalization of the data significantly improves accuracy of the predictions. Without normalization different attributes have various low and high values, this might affect predictions. Since KNN uses distances to predict class the instance values must be scaled to provide more accurate predictions. Normalization helps to eliminate noise that might cause inaccurate predictions and makes all values equally weighted as required in this problem description.
+
+(e):
+There are several ways to select optimal K for KNN algorithm. Cross validation can be used to select K for KNN algorithm. We can split the data into n number of folds of similar sizes, hold out the first set as a test dataset, for each value of K calculate nearest neighbors and record the accuracy of the test. Repeat this calculation on all n folds. For each K find average accuracy rates across validation sets and choose the K value with the highest accuracy rate. Use this K to construct the final model. Always choose an odd number for K to avoid the equal vote split.
+Another way of choosing K is called “elbow method”. It is widely used in programming and Python packages such as scikit-learn. The method plots the explained variation as a function of the number of clusters and picking the elbow of the curve as the number of clusters to use.
