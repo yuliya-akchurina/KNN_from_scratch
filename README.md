@@ -1,4 +1,4 @@
-#   K Nearest Neighbors from scratch!
+#   K Nearest Neighbors From Scratch
 
 #### Goal:
 Write the K Nearest Neighbors classifier from scratch in Python. Classify spam emails using the two provided datasets. 
