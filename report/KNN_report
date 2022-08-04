@@ -7,7 +7,7 @@ Implement the KNN classifier:
   (d) What can you conclude by comparing the KNN performance in (a) and (b)?
   (e) Describe a method to select the optimal k for the KNN algorithm.
   
-  The accuracies as they are printed out by the Python script for Questions a and b, as well as the first 50 predictions for the normalized datasets for questions c:
+The accuracies as they are printed out by the Python script for Questions a and b, as well as the first 50 predictions for the normalized datasets for questions c:
   
 KNN accuracy report without normalizing features:
 K-1: 75.18%
